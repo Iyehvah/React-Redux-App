@@ -8,6 +8,14 @@ const Div = S.div`
     text-align: center;
 `;
 
+const Button = S.button`
+    color: green;
+    background-color: black;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+`;
+
 const BleachList = props => {
     const fetchBleach = e => {
         e.preventDefault();
@@ -16,16 +24,17 @@ const BleachList = props => {
 
     return (
         <Div>
-        <h2>Here is a list of character of my favorite anime, Bleach!</h2>
-        <div>
-            {props.characters.map(character => (<div>
-                <h4 key={character.url}>{character.name}</h4>
-                <img src={`${character.image_url}`}></img>
-                </div>
+        <h2>Here is a list of character from my favorite anime, Bleach!</h2>
+        <Button onClick={fetchBleach}>Fetch Characters!</Button>
+        <div className="mainbox">
+            {props.characters.map(character => (
+                <div className="box">
+                    <h4 key={character.url}>{character.name}</h4>
+                    <img className="images" src={`${character.image_url}`}></img>
+            </div>
             ))}
         </div>
         {props.error && <p>{props.error}</p>}
-        <button onClick={fetchBleach}>Fetch Characters!</button>
         </Div>
     );
 };
