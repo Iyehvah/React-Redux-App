@@ -9,12 +9,12 @@ export const getCharacters = () => dispatch =>{
         type: FETCH_BLEACH_START
     });
     axios.get('https://api.jikan.moe/v3/anime/269/characters_staff')
-        .then(res => {
-            console.log(res.data.characters)
-        })
-        .catch(error => {
-            console.log('FAILED', error)
-        })
+    .then(res => dispatch({ type: FETCH_BLEACH_SUCCESS, payload: res.data.characters })
+    )
+    .catch(error => {
+      console.log(error.response);
+      dispatch({type: FETCH_BLEACH_FAILURE, payload:`${error.response.status} ${error.response.data}` })
+    }) 
 };
 
 

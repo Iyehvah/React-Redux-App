@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 
 import reducer from "./reducers";
 import BleachList from "./components/BleachList";
+import './styles.css';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
